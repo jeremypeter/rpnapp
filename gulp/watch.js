@@ -8,7 +8,7 @@ gulp.task('watch', ['inject'], function () {
   gulp.watch([
     paths.src + '/*.html',
     paths.src + '/{app,components}/**/*.scss',
-    paths.src + '/{app,components}/**/*.js',
+    paths.src + '/{app,components,services}/**/*.js',
     'bower.json'
   ], ['inject']);
 });

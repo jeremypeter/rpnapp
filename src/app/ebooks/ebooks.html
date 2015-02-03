@@ -1,0 +1,15 @@
+
+<div class="container">
+  <div ng-include="'components/navbar/navbar.html'"></div>
+  
+  <form>
+    <div class="input-group" ng-repeat="ebook in ebook.ebooks">
+      <span class="input-group-addon">
+        <input type="checkbox" id="{{ebook.index}}" aria-label="...">
+      </span>
+      <label class="description" for="{{ebook.index}}"><strong>{{ ebook.title }}</strong> - {{ ebook.description }}</label>
+    </div>
+    
+    <button class="btn btn-primary" type="submit">Submit</button>
+  </form>
+</div>

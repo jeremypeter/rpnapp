@@ -1,14 +1,46 @@
 'use strict';
 
-angular.module('rpnapp', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ngResource', 'ui.router'])
+angular.module('rpnapp', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ui.router', 'ui.bootstrap'])
   .config(function ($stateProvider, $urlRouterProvider) {
     $stateProvider
-      .state('home', {
+      .state('login', {
         url: '/',
-        templateUrl: 'app/main/main.html',
-        controller: 'MainCtrl'
-      });
+        templateUrl: 'app/login/login.html',
+        controller: 'Login'
+      })
+      .state('coach', {
+        url: '/coach',
+        templateUrl: 'app/person/coach.html',
+        controller: 'Coach',
+        controllerAs: 'coach'
+      })
+      .state('ebooks', {
+        url: '/ebooks',
+        templateUrl: 'app/ebooks/ebooks.html',
+        controller: 'Ebooks',
+        controllerAs: 'ebook'
+      })
+      .state('videos', {
+        url: '/videos',
+        templateUrl: 'app/videos/videos.html',
+        controller: 'Videos',
+        controllerAs: 'video'
+      })
+      .state('new-coach', {
+        url: '/new-coach',
+        templateUrl: 'app/new-coach/new-coach.html',
+        controller: 'NewCoach',
+        controllerAs: 'newcoach'
+      })
+      .state('tips-resources', {
+        url: '/tips-resources',
+        templateUrl: 'app/tips-and-resources/tips-resources.html',
+        controller: 'TipsResources',
+        controllerAs: 'tr'
+      })
+
+
+
 
     $urlRouterProvider.otherwise('/');
-  })
-;
+  });
