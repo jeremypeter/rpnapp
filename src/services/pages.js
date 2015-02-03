@@ -1,46 +1,27 @@
 angular.module('rpnapp')
   .service('pages', Urls);
 
-function Urls(){
+Urls.$inject = ['$http', '$q'];
+
+function Urls($http, $q){
   // vm = view model
   var vm = this;
 
-  vm.pages = [
+  vm.getUrls = function(){
+    var deferred = $q.defer();
 
-    {
-      title: 'Ebooks',
-      id: 'ebooks',
-      index: null
-    },
-    {
-      title: 'Videos',
-      id: 'videos',
-      index: null
-    },
-    {
-      title: 'New Coaches Start Here',
-      id: 'new-coaches',
-      index: null
-    },
-    {
-      title: 'Tips and Resources',
-      id: 'tips-resources',
-      index: null
-    },
-    {
-      title: 'Team Beachbody',
-      id: 'team-beachbody',
-      index: null
-    },
-    {
-      title: 'Checklists and Downloads',
-      id: 'checklists-downloads',
-      index: null
-    }
-  ];
+    $http.get('../json/pages.json')
+      .then(function(res){
 
-  // Add index to `pages.index`
-  angular.forEach(vm.pages, function(page, index){
-    page.index = index;
-  });
+        // Add index to `pages.index`
+        angular.forEach(res.data, function(page, index){
+          page.index = index;
+        });
+
+        deferred.resolve(res.data);
+      });
+
+    return deferred.promise;
+  };
+  
 }

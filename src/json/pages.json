@@ -1,0 +1,32 @@
+[
+  {
+    "title": "Ebooks",
+    "id": "ebooks",
+    "index": null
+  },
+  {
+    "title": "Videos",
+    "id": "videos",
+    "index": null
+  },
+  {
+    "title": "New Coaches Start Here",
+    "id": "new-coaches",
+    "index": null
+  },
+  {
+    "title": "Tips and Resources",
+    "id": "tips-resources",
+    "index": null
+  },
+  {
+    "title": "Team Beachbody",
+    "id": "team-beachbody",
+    "index": null
+  },
+  {
+    "title": "Checklists and Downloads",
+    "id": "checklists-downloads",
+    "index": null
+  }
+]

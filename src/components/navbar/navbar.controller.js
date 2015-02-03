@@ -11,14 +11,19 @@ function NavBar(pages, $location){
   var path = $location.path().slice(1, $location.path().length);
 
   vm.page = vm.page || 'Home';
-  vm.pages = pages.pages;
+  vm.pages = vm.pages || [];
 
-  vm.pages.forEach(function(page){
-    
-    if(path === page.id){
-      vm.page = page.title;
-    }
-    
-  });   
+  pages.getUrls()
+    .then(function(data){
+      
+      vm.pages = data;
 
+      data.forEach(function(page){
+
+        if(path === page.id){
+          vm.page = page.title;
+        }
+
+      });     
+    });
 }
