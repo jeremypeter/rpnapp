@@ -14,7 +14,7 @@
       <ul class="dropdown-menu" role="menu">
         <li><a href="#coach">Home</a></li>
         <li ng-repeat="link in nav.pages">
-          <a href="#{{link.id}}">{{link.title}}</a>
+          <a ui-sref="{{link.id}}">{{link.title}}</a>
         </li>
       </ul>
     </div>

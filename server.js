@@ -5,7 +5,9 @@ var csrf = require('csurf');
 var helmet = require('helmet');
 var conf = require('./server.config');
 var app = express();
-
+var request = require('request');
+var videoKey = process.env.WISTIA_KEY;
+var cors = require('cors');
 
 /////////////////////////////////
 // Middleware
@@ -34,6 +36,7 @@ app.use(function(req, res, next) {
 
 app.use(helmet());
 app.use(helmet.contentSecurityPolicy(conf.csp));
+// app.use(cors());
 
 app.use(express.static(__dirname + '/dist'));
 
@@ -44,7 +47,14 @@ app.use(express.static(__dirname + '/dist'));
 // Routes 
 ////////////////////////////////
 
+app.get('/api/wistia', cors(), function(req, res){
+  var api = 'https://api.wistia.com/v1/medias.json?api_password=' + videoKey;
 
+  request({ url: api}, function(err, resp, body){
+    console.log(JSON.stringify(JSON.parse(body), null, 2))
+    res.json(body);
+  });
+});
 
 
 /////////////////////////////////

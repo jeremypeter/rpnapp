@@ -1,7 +1,9 @@
 {
   "name": "rpnapp",
   "version": "0.0.0",
-  "dependencies": {},
+  "dependencies": {
+    "cors": "^2.5.3"
+  },
   "devDependencies": {
     "gulp": "~3.8.10",
     "gulp-autoprefixer": "~2.0.0",

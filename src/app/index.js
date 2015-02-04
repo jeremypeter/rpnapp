@@ -32,14 +32,24 @@ angular.module('rpnapp', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ui
         controller: 'NewCoach',
         controllerAs: 'newcoach'
       })
+      .state('team-beachbody', {
+        url: '/team-beachbody',
+        templateUrl: 'app/team-beachbody/team-beachbody.html',
+        controller: 'TeamBeachbody',
+        controllerAs: 'tb'
+      })
+      .state('checklists-downloads', {
+        url: '/checklists-downloads',
+        templateUrl: 'app/checklists-downloads/checklists-downloads.html',
+        controller: 'ChecklistsDownloads',
+        controllerAs: 'cd'
+      })
       .state('tips-resources', {
         url: '/tips-resources',
         templateUrl: 'app/tips-and-resources/tips-resources.html',
         controller: 'TipsResources',
         controllerAs: 'tr'
-      })
-
-
+      });
 
 
     $urlRouterProvider.otherwise('/');
