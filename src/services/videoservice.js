@@ -1,24 +1,31 @@
 angular.module('rpnapp')
   .service('videoservice', Videos);
 
-Videos.$inject = ['$http', '$q'];
+Videos.$inject = ['$http'];
 
-function Videos($http, $q){
-  // vm = view model
-  var vm = this;
+function Videos($http){
+  
+  var vm = this; // vm = view model
+  vm.getData = getData;
 
-  vm.getUrls = function(){
-    var deferred = $q.defer();
 
-    $http.get('http://localhost:3000/api/wistia')
-      .then(function(res){
-        deferred.resolve(res.data);
-      })
-      .catch(function(err){
-        console.log(err);
-      })
+  ////////////////////////////////////
+  // Function Declarations
+  ////////////////////////////////////
 
-    return deferred.promise;
+  function getData(){
+    
+    return $http.get('http://localhost:3000/api/wistia')
+      .then(getDataComplete)
+      .catch(getDataFail)
   };
+
+  function getDataComplete(res){
+    return res.data;
+  }
+
+  function getDataFail(err){
+    console.log(err);
+  }
   
 }

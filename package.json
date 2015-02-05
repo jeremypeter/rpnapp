@@ -2,7 +2,8 @@
   "name": "rpnapp",
   "version": "0.0.0",
   "dependencies": {
-    "cors": "^2.5.3"
+    "cors": "^2.5.3",
+    "request": "^2.53.0"
   },
   "devDependencies": {
     "gulp": "~3.8.10",

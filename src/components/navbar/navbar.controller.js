@@ -1,29 +1,33 @@
-'use strict';
+(function(){
 
-angular.module('rpnapp')
-  .controller('NavbarCtrl', NavBar);
+  'use strict';
 
-NavBar.$inject = ['pages', '$location'];
+  angular.module('rpnapp')
+    .controller('NavbarCtrl', NavBar);
 
-function NavBar(pages, $location){
+  NavBar.$inject = ['pages', '$location'];
 
-  var vm = this; // vm = view model 
-  var path = $location.path().slice(1, $location.path().length);
+  function NavBar(pages, $location){
 
-  vm.page = vm.page || 'Home';
-  vm.pages = vm.pages || [];
+    var vm = this; // vm = view model 
+    var path = $location.path().slice(1, $location.path().length);
 
-  pages.getUrls()
-    .then(function(data){
-      
-      vm.pages = data;
+    vm.page = vm.page || 'Home';
+    vm.pages = vm.pages || [];
 
-      data.forEach(function(page){
+    pages.getUrls()
+      .then(function(data){
+        
+        vm.pages = data;
 
-        if(path === page.id){
-          vm.page = page.title;
-        }
+        data.forEach(function(page){
 
-      });     
-    });
-}
+          if(path === page.id){
+            vm.page = page.title;
+          }
+
+        });     
+      });
+  }
+
+})();

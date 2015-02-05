@@ -1,5 +1,9 @@
-angular.module('rpnapp')
-  .controller('Videos', Videos);
+(function(){
+
+  'use strict';
+
+  angular.module('rpnapp')
+    .controller('Videos', Videos);
 
   Videos.$inject = ['videoservice'];
 
@@ -8,13 +12,14 @@ angular.module('rpnapp')
     
     vm.videos = vm.videos || [];
 
-    pages.getUrls()
+    pages.getData()
       .then(function(data){
 
         var objs = JSON.parse(data);
         var thumb = '';
         var imgParams;
 
+        // 
         angular.forEach(objs, function(obj){
           thumb = obj.thumbnail.url;
           imgParams = '?image_play_button=true&image_resize=960';
@@ -33,3 +38,21 @@ angular.module('rpnapp')
         vm.videos = objs;
       });
   }
+
+
+
+  /*
+  * Removes query parameters from url
+  * 
+  * @param {String} url
+  *
+  * @returns {String} url with query parameters removed
+  */
+
+  function cleanUrl(url){
+    var queryIdx = url.indexOf('?');
+    return (queryIdx !== -1) ? url.slice(0, queryIdx) : url;
+  }
+
+
+})();

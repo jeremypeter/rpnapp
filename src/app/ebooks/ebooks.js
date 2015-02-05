@@ -1,5 +1,9 @@
-angular.module('rpnapp')
-  .controller('Ebooks', Ebooks);
+(function(){
+
+  'use strict';
+  
+  angular.module('rpnapp')
+    .controller('Ebooks', Ebooks);
 
   Ebooks.$inject = [];
 
@@ -32,3 +36,5 @@ angular.module('rpnapp')
     })
     
   }
+
+})();

@@ -3,7 +3,7 @@
 
   <div class="videos">
     <div class="video-card" ng-repeat="video in video.videos">
-        <a href="{{video.videoUrl}}"><img src="{{video.thumbnail.url}}"></a>
+        <a href="{{video.videoUrl}}"><img ng-src="{{video.thumbnail.url}}"></a>
         <div class="content">
           <span class="topic">{{video.project.name}}</span>
           <h3 class="title">{{video.name}}</h3>

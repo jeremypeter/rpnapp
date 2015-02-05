@@ -1,5 +1,8 @@
-angular.module('rpnapp')
-  .controller('Coach', Coach);
+(function(){
+  'use strict';
+
+  angular.module('rpnapp')
+    .controller('Coach', Coach);
 
   Coach.$inject = ['pages'];
 
@@ -12,3 +15,5 @@ angular.module('rpnapp')
         vm.pages = data;
       });
   }
+
+})();
