@@ -1,8 +1,5 @@
-<div class="container">
-  <div ng-include="'components/navbar/navbar.html'"></div>
+<div ng-include="'components/navbar/navbar.html'"></div>
 
-  <div class="tiles">
-      <a ui-sref="{{page.id}}" ng-repeat="page in coach.pages">{{page.title}}</a>
-  </div>
-
+<div class="tiles">
+    <a ui-sref="{{page.id}}" ng-repeat="page in coach.pages">{{page.title}}</a>
 </div>

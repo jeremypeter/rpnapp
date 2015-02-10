@@ -1,18 +1,20 @@
 (function(){
+
   'use strict';
+  
+  angular.module('rpnapp.coach', [])
+    .config(coachRoute);
 
-  angular.module('rpnapp')
-    .controller('Coach', Coach);
+  coachRoute.$inject = ['$stateProvider'];
 
-  Coach.$inject = ['pages'];
-
-  function Coach(pages){
-    var vm = this; // vm = view model
-
-    vm.pages = vm.pages || [];
-    pages.getUrls()
-      .then(function(data){
-        vm.pages = data;
+  function coachRoute($stateProvider){
+    
+    $stateProvider
+      .state('coach', {
+        url: '/coach',
+        templateUrl: 'app/person/coach.html',
+        controller: 'Coach',
+        controllerAs: 'coach'
       });
   }
 

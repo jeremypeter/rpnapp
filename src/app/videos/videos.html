@@ -1,8 +1,47 @@
-<div class="container">
-  <div ng-include="'components/navbar/navbar.html'"></div>
+<div ng-include="'components/navbar/navbar.html'"></div>
 
-  <div class="videos">
-    <div class="video-card" ng-repeat="video in video.videos">
+<div class="videos">
+  
+  <div class="sidebar">
+    
+    <input type="text" placeholder="Filter videos" ng-model="test">
+
+    <accordion>
+      <accordion-group is-open="status.open">
+          <accordion-heading>
+              Coach Bootcamp<i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
+          </accordion-heading>
+          <div>
+            <a href="">WEEK 1</a>
+          </div>
+          <div>
+            <a href="">WEEK 2</a>
+          </div>
+          <div>
+            <a href="">WEEK 3</a>
+          </div>
+      </accordion-group>
+
+      <accordion-group>
+          <accordion-heading>
+             Building Your Business<i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
+          </accordion-heading>
+          <div>
+            <a href="">WEEK 1</a>
+          </div>
+          <div>
+            <a href="">WEEK 2</a>
+          </div>
+          <div>
+            <a href="">WEEK 3</a>
+          </div>
+      </accordion-group>
+    </accordion>
+    
+  </div>
+
+  <div class="video-cards">
+    <div class="video-card" ng-repeat="video in videos.videos | filter:test | orderBy: 'created' : true ">
         <a href="{{video.videoUrl}}"><img ng-src="{{video.thumbnail.url}}"></a>
         <div class="content">
           <span class="topic">{{video.project.name}}</span>
@@ -11,5 +50,4 @@
         </div>
     </div>
   </div>
-
 </div>

@@ -1,27 +1,29 @@
-angular.module('rpnapp')
-  .service('pages', Urls);
+(function(){
+  angular.module('rpnapp')
+    .service('pages', Urls);
 
-Urls.$inject = ['$http', '$q'];
+  Urls.$inject = ['$http', '$q'];
 
-function Urls($http, $q){
-  // vm = view model
-  var vm = this;
+  function Urls($http, $q){
+    // vm = view model
+    var vm = this;
 
-  vm.getUrls = function(){
-    var deferred = $q.defer();
+    vm.getUrls = function(){
+      var deferred = $q.defer();
 
-    $http.get('../json/pages.json')
-      .then(function(res){
+      $http.get('../json/pages.json')
+        .then(function(res){
 
-        // Add index to `pages.index`
-        angular.forEach(res.data, function(page, index){
-          page.index = index;
+          // Add index to `pages.index`
+          angular.forEach(res.data, function(page, index){
+            page.index = index;
+          });
+
+          deferred.resolve(res.data);
         });
 
-        deferred.resolve(res.data);
-      });
-
-    return deferred.promise;
-  };
-  
-}
+      return deferred.promise;
+    };
+    
+  }
+})();

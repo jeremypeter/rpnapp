@@ -1,31 +1,35 @@
-angular.module('rpnapp')
-  .service('videoservice', Videos);
+(function(){
 
-Videos.$inject = ['$http'];
+  angular.module('rpnapp')
+    .service('videoservice', Videos);
 
-function Videos($http){
-  
-  var vm = this; // vm = view model
-  vm.getData = getData;
+  Videos.$inject = ['$http'];
 
-
-  ////////////////////////////////////
-  // Function Declarations
-  ////////////////////////////////////
-
-  function getData(){
+  function Videos($http){
     
-    return $http.get('http://localhost:3000/api/wistia')
-      .then(getDataComplete)
-      .catch(getDataFail)
-  };
+    var vm = this; // vm = view model
+    vm.getData = getData;
 
-  function getDataComplete(res){
-    return res.data;
+
+    ////////////////////////////////////
+    // Function Declarations
+    ////////////////////////////////////
+
+    function getData(){
+      
+      return $http.get('http://localhost:3000/api/wistia')
+        .then(getDataComplete)
+        .catch(getDataFail)
+    };
+
+    function getDataComplete(res){
+      return res.data;
+    }
+
+    function getDataFail(err){
+      console.log(err);
+    }
+    
   }
 
-  function getDataFail(err){
-    console.log(err);
-  }
-  
-}
+})();

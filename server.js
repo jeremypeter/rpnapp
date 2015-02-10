@@ -51,7 +51,6 @@ app.get('/api/wistia', cors(), function(req, res){
   var api = 'https://api.wistia.com/v1/medias.json?api_password=' + videoKey;
 
   request({ url: api}, function(err, resp, body){
-    console.log(JSON.stringify(JSON.parse(body), null, 2))
     res.json(body);
   });
 });

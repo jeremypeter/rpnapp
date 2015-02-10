@@ -137,7 +137,18 @@ $mini: 415px;
 .videos {
   display: flex;
   flex-wrap: wrap;
+  align-items: flex-start;
+  flex-direction: column;
 
+  @include small {
+    flex-direction: row;
+  }
+}
+
+.video-cards {
+  display: flex;
+  flex: 1 0 0;
+  flex-wrap: wrap;
 }
 
 .video-card {
@@ -147,43 +158,17 @@ $mini: 415px;
   flex: 1 1 100%;
 
   @include mini {
-    flex: 1 1 40%;
-    margin: .8em;
-
-    &:first-child {
-      margin-left: 0;
-    }
-
-    &:nth-child(2n){
-      margin-right: 0;
-    }
-
-    &:nth-child(3n){
-      margin-left: 0;
-    } 
+    // flex: 1 1 40%;
+    margin: 0 0.8em 2em;
   }
 
   @include small {
-    flex: 1 1 20%;
-    &:nth-child(2n){
-      margin-right: .8em;
-    }
-
-    &:nth-child(3n){
-      margin-left: .8em;
-    }
-    &:nth-child(4n){
-      margin-right: 0;
-    }
-    
+    flex: 1 0 40%;  
   }
 
   @include large{
-   
-
+   flex: 1 0 20%;
   }
-
-
   
   .content {
     padding: 1em 1em 4em;
@@ -206,6 +191,29 @@ $mini: 415px;
 
 img {
   max-width: 100%; 
+}
+
+/**************************
+  =sidebar
+**************************/
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  
+
+  input {
+    margin-bottom: 1em;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+    padding: 1em;
+  }
+
+  @include small {
+    width: 18.75em;
+    margin: 0 1em 1em;
+  }
 }
 
 

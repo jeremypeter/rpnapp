@@ -1,10 +1,21 @@
 (function(){
 
   'use strict';
+  
+  angular.module('rpnapp.login', [])
+    .config(loginRoute);
 
-  angular.module('rpnapp')
-    .controller('Login', function(){
-      
-    });
+  loginRoute.$inject = ['$stateProvider'];
+
+  function loginRoute($stateProvider){
+    
+    $stateProvider
+      .state('login', {
+        url: '/',
+        templateUrl: 'app/login/login.html',
+        controller: 'Login',
+        controllerAs: 'login'
+      });
+  }
 
 })();
