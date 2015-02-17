@@ -2,6 +2,6 @@
 
   'use strict';
   
-  angular.module('rpnapp.videos', []);
+  angular.module('rpnapp.base', []);
 
 })();

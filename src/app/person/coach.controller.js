@@ -4,13 +4,13 @@
   angular.module('rpnapp')
     .controller('Coach', Coach);
 
-  Coach.$inject = ['pages'];
+  Coach.$inject = ['navService'];
 
-  function Coach(pages){
+  function Coach(navService){
     var vm = this; // vm = view model
 
     vm.pages = vm.pages || [];
-    pages.getUrls()
+    navService.getUrls()
       .then(function(data){
         vm.pages = data;
       });

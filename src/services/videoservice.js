@@ -1,7 +1,7 @@
 (function(){
 
   angular.module('rpnapp')
-    .service('videoservice', Videos);
+    .service('videoService', Videos);
 
   Videos.$inject = ['$http'];
 

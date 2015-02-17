@@ -13,64 +13,33 @@
     'ui.bootstrap', 
 
     // Local Modules
+    'rpnapp.base',
     'rpnapp.login',
     'rpnapp.ebooks',
     'rpnapp.coach',
     'rpnapp.videos'
 
-  ]).config(defaultRoute);
+  ])
+  .config(defaultRoute)
+  .constant('AUTH_EVENTS', {
+    loginSuccess: 'auth-login-success',
+    loginFailed: 'auth-login-failed',
+    logoutSuccess: 'auth-logout-success',
+    sessionTimeout: 'auth-session-timeout',
+    notAuthenticated: 'auth-not-authenticated',
+    notAuthorized: 'auth-not-authorized'
+  })
+  .constant('USER_ROLES', {
+    all: '*',
+    admin: 'admin',
+    coach: 'coach',
+    client: 'client'
+  });
 
   defaultRoute.$inject = ['$urlRouterProvider']
 
   function defaultRoute($urlRouterProvider){
-    $urlRouterProvider.otherwise('/');
+    $urlRouterProvider.otherwise('/login');
   }
-    // .config(function ($stateProvider, $urlRouterProvider) {
-    //   $stateProvider
-    //     .state('login', {
-    //       url: '/',
-    //       templateUrl: 'app/login/login.html',
-    //       controller: 'Login'
-    //     })
-    //     .state('coach', {
-    //       url: '/coach',
-    //       templateUrl: 'app/person/coach.html',
-    //       controller: 'Coach',
-    //       controllerAs: 'coach'
-    //     })
-    //     .state('videos', {
-    //       url: '/videos',
-    //       templateUrl: 'app/videos/videos.html',
-    //       controller: 'Videos',
-    //       controllerAs: 'video'
-    //     })
-    //     .state('new-coach', {
-    //       url: '/new-coach',
-    //       templateUrl: 'app/new-coach/new-coach.html',
-    //       controller: 'NewCoach',
-    //       controllerAs: 'newcoach'
-    //     })
-    //     .state('team-beachbody', {
-    //       url: '/team-beachbody',
-    //       templateUrl: 'app/team-beachbody/team-beachbody.html',
-    //       controller: 'TeamBeachbody',
-    //       controllerAs: 'tb'
-    //     })
-    //     .state('checklists-downloads', {
-    //       url: '/checklists-downloads',
-    //       templateUrl: 'app/checklists-downloads/checklists-downloads.html',
-    //       controller: 'ChecklistsDownloads',
-    //       controllerAs: 'cd'
-    //     })
-    //     .state('tips-resources', {
-    //       url: '/tips-resources',
-    //       templateUrl: 'app/tips-and-resources/tips-resources.html',
-    //       controller: 'TipsResources',
-    //       controllerAs: 'tr'
-    //     });
-
-
-    //   $urlRouterProvider.otherwise('/');
-    // });
 
 })();

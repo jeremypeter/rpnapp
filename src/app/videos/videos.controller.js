@@ -5,14 +5,14 @@
   angular.module('rpnapp.videos')
     .controller('Videos', Videos);
 
-  Videos.$inject = ['videoservice'];
+  Videos.$inject = ['videoService'];
 
-  function Videos(videoservice){
+  function Videos(videoService){
     var vm = this; // vm = view model
     
     vm.videos = vm.videos || [];
 
-    videoservice.getData()
+    videoService.getData()
       .then(function(json){
         
         var items = JSON.parse(json);

@@ -19,20 +19,19 @@ app.use(bodyParser.json({ type: ['json', 'application/csp-report'] }));
 // Need to log Content Security Privacy reports before calling csrf because 
 // csrf will throw `Error: invalid csrf token` error
 app.post(conf.csp.reportUri, function (req, res) {
-  console.log(req.body);
   res.sendStatus(200);
  });
 
 app.use(session(conf.session));
 
 // IMPORTANT: csrf needs to be after any cookie and session initialization
-app.use(csrf());
+// app.use(csrf());
 
 // Need to set csrf cookie for Angular 
-app.use(function(req, res, next) {
-  res.cookie('XSRF-TOKEN', req.csrfToken());
-  next();
-});
+// app.use(function(req, res, next) {
+//   res.cookie('XSRF-TOKEN', req.csrfToken());
+//   next();
+// });
 
 app.use(helmet());
 app.use(helmet.contentSecurityPolicy(conf.csp));
@@ -53,6 +52,15 @@ app.get('/api/wistia', cors(), function(req, res){
   request({ url: api}, function(err, resp, body){
     res.json(body);
   });
+});
+
+app.post('/login', function(req, res, next){
+  
+  var user = req.body.user
+  
+  res.json({
+    user: user
+  })
 });
 
 

@@ -1,17 +1,16 @@
 (function(){
   angular.module('rpnapp')
-    .service('pages', Urls);
+    .service('navService', Navigation);
 
-  Urls.$inject = ['$http', '$q'];
+  Navigation.$inject = ['$http'];
 
-  function Urls($http, $q){
+  function Navigation($http){
     // vm = view model
     var vm = this;
 
     vm.getUrls = function(){
-      var deferred = $q.defer();
 
-      $http.get('../json/pages.json')
+      return $http.get('../json/pages.json')
         .then(function(res){
 
           // Add index to `pages.index`
@@ -19,10 +18,9 @@
             page.index = index;
           });
 
-          deferred.resolve(res.data);
-        });
+          return res.data;
 
-      return deferred.promise;
+        });
     };
     
   }

@@ -1,10 +1,9 @@
 <nav class="navbar" ng-controller="NavbarCtrl as nav">
-  
+<!--   
   <a class="navbar-brand" href="#">
     <img class="img-coach img-circle" src="https://dl.dropboxusercontent.com/u/33604129/beckypeter.com/email/images/img-becky.png" alt="Coach" >
-  </a>
+  </a> -->
   <span class="coach-name">Becky Peter</span>
-  
   <div class="box box-right">
     <span class="page">{{nav.page}}</span>
     <div class="btn-group" dropdown is-open="status.isopen">
@@ -12,9 +11,9 @@
         <span class="caret"></span>
       </button>
       <ul class="dropdown-menu" role="menu">
-        <li><a href="#coach">Home</a></li>
+        <li><a ui-sref="app.coach">Home</a></li>
         <li ng-repeat="link in nav.pages">
-          <a ui-sref="{{link.id}}">{{link.title}}</a>
+          <a ui-sref="app.{{link.id}}">{{link.title}}</a>
         </li>
       </ul>
     </div>
